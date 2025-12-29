@@ -1,4 +1,4 @@
-/* Global Styles */
+/* --- GLOBAL STYLES (Tetap) --- */
 * {
     margin: 0;
     padding: 0;
@@ -19,10 +19,10 @@ body {
 }
 
 .purple-text {
-    color: #9d4edd; /* Warna Ungu */
+    color: #9d4edd;
 }
 
-/* Navbar */
+/* --- NAVBAR --- */
 header {
     width: 100%;
     padding: 25px 0;
@@ -30,7 +30,6 @@ header {
     top: 0;
     z-index: 1000;
     background: #9d4edd;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 nav {
@@ -44,10 +43,6 @@ nav {
 .logo {
     font-size: 24px;
     font-weight: bold;
-}
-
-.logo span {
-    color: #9d4edd;
 }
 
 nav ul {
@@ -70,7 +65,7 @@ nav ul li a:hover {
     color: #000000;
 }
 
-/* Hero Section */
+/* --- HERO SECTION --- */
 .hero {
     height: 100vh;
     display: flex;
@@ -96,7 +91,6 @@ nav ul li a:hover {
     font-size: 3.5rem;
     line-height: 1.2;
     margin-bottom: 20px;
-    margin-left: ;
 }
 
 .social-box p {
@@ -118,7 +112,7 @@ nav ul li a:hover {
     display: inline-block;
 }
 
-/* Section General */
+/* --- SECTION GENERAL --- */
 .section-padding {
     padding: 100px 0;
 }
@@ -136,21 +130,20 @@ nav ul li a:hover {
     color: #e0e0e0;
     max-width: 900px;
 }
-/* Container utama untuk grid sertifikat */
+
+/* --- CERTIFICATE GRID --- */
 .certificate-grid {
     display: grid;
-    /* Membuat kolom otomatis: minimal 300px, maksimal mengisi ruang sisa */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 25px;
     margin-top: 30px;
 }
 
-/* Bingkai luar untuk setiap sertifikat */
 .cert-card {
-    background: #1a1a1a; /* Background gelap di belakang foto */
+    background: #1a1a1a;
     border: 1px solid #333;
     border-radius: 12px;
-    height: 250px; /* TINGGI KONSISTEN UNTUK SEMUA */
+    height: 250px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -159,49 +152,39 @@ nav ul li a:hover {
     transition: 0.3s;
 }
 
-/* Mengatur foto di dalam bingkai */
 .cert-card img {
     max-width: 100%;
     max-height: 100%;
-    width: 900px;
-    object-fit: contain; /* FOTO TIDAK AKAN TERPOTONG */
+    object-fit: contain;
     border-radius: 4px;
 }
 
-/* Efek saat kursor diarahkan (Hover) */
 .cert-card:hover {
-    border-color: #9d4edd; /* Warna ungu menyala */
+    border-color: #9d4edd;
     transform: translateY(-5px);
-
     box-shadow: 0 10px 20px rgba(157, 78, 221, 0.2);
 }
 
-.container img{
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+/* --- PORTFOLIO IMAGES --- */
+.container img {
+    padding: 15px;
+    transition: 0.3s;
 }
 
 .container img:hover {
-    border-color: #9d4edd; /* Warna ungu menyala */
     transform: translateY(-10px);
-
     box-shadow: 0 10px 20px #9d4edd;
 }
-.container h2{
+
+.container h2 {
     padding-bottom: 20px;
     padding-top: 20px;
 }
 
-
-
+/* --- FOOTER --- */
 footer {
     text-align: center;
     padding: 50px 0;
-    color: #555;
-    font-size: 14px;
-    font-display: block;
     background-color: #9d4edd;
 }
 
@@ -209,17 +192,90 @@ footer p {
     color: #ffffff;
 }
 
-/* Responsivitas */
-@media (max-width: 768px) {
-    .hero-flex {
-        flex-direction: column;
-        text-align: center;
+/* ======================================================
+   BAGIAN RESPONSIVE (KHUSUS UNTUK HP & TABLET)
+   ====================================================== */
+
+@media (max-width: 1024px) {
+    .hero-image img {
+        margin-left: 0; /* Hilangkan margin jauh di tablet */
+        width: 300px;
     }
     .hero-text h1 {
-        font-size: 2.5rem;
-    }
-    .hero-image img {
-        width: 100%;
-        max-width: 300px;
+        font-size: 2.8rem;
     }
 }
+
+@media (max-width: 768px) {
+    /* Navbar jadi vertikal */
+    nav {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    nav ul {
+        padding: 0;
+    }
+
+    nav ul li {
+        margin: 0 10px;
+    }
+
+    /* Hero Section menyusun ke bawah */
+    .hero {
+        height: auto;
+        padding-top: 180px; /* Ruang untuk navbar yang memanjang */
+        padding-bottom: 50px;
+    }
+
+    .hero-flex {
+        flex-direction: column-reverse; /* Teks dulu baru gambar profil */
+        gap: 40px;
+        text-align: center;
+    }
+
+    .hero-image img {
+        margin-left: 0;
+        width: 80%; /* Gambar menyesuaikan lebar HP */
+        max-width: 300px;
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+
+    /* Memaksa gambar portfolio agar tidak pecah/melebar keluar layar */
+    /* Menggunakan !important karena di HTML Anda ada inline style width */
+    #portfolio img {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        padding: 10px 0;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .about-desc {
+        text-align: justify;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 20px;
+    }
+
+    nav ul li a {
+        font-size: 14px;
+    }
+    
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+}
+
